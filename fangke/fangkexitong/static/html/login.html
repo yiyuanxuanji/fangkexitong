@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="../css/initial.css" />
+		<link rel="stylesheet" href="../css/login.css" />
+		<script src="../js/jquery-3.2.1.min.js"></script>
+		<script src="../js/rem.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/login.js"></script>
+	</head>
+	<body>
+		<div class="allContent"></div>
+		<div class="all">
+			<div class="allCon">
+				<div class="nav">
+					<ul>
+						<li>
+							<div class="nav1" onclick = show(0,this)>登录</div>
+						</li>
+						<li>
+							<div onclick = show("-100%",this)>绑定</div>
+						</li>
+					</ul>
+				</div>
+				<div class="content">
+					<div class="login">
+						<div class="loginPhone">
+							<img src="../img/phone.png" alt="" />
+							<input class="inpPhone" type="text" placeholder="请输入手机号" />
+						</div>
+						<div class="loginPhone loginWord">
+							<img src="../img/password.png" alt="" />
+							<input class="inpPass" type="password" placeholder="请输入密码" />
+						</div>
+						<!--<a class="forgetWord">修改密码</a>-->
+						<button class="loginBtn denglv" disabled="disabled">登录</button>
+					</div>
+					<div class="registration">
+						<div class="loginPhone">
+							<img src="../img/phone.png" alt="" />
+							<input class="registrationPhone" type="text" placeholder="请输入手机号" />
+						</div>
+						<div class="loginPhone loginWord">
+							<img src="../img/duanxin.png" alt="" />
+							<input type="text" class ="registrationCode" placeholder="请输入验证码" />
+							<button class="fasong" >发送验证码</button>
+						</div>
+						<div class="loginPhone loginWord">
+							<img src="../img/password.png" alt="" />
+							<input type="password" class="registrationPass" placeholder="请输入密码" />
+						</div>
+						<button class="loginBtn zhuce">绑定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

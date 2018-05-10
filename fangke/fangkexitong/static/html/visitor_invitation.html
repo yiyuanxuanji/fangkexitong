@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    <title>自定义邀请函</title>
+    <link rel="stylesheet" href="../css/visitor_invitation.css">
+    <link href="http://cdn.bootcss.com/openlayers/4.0.1/ol.css" rel="stylesheet">
+    <style type="text/css">
+      .num_input{
+        width: 30px;
+        height: 30px;
+        background: #f5f5f5;
+        border: 0;
+      }
+      #submit_button{
+        background:#fb7e3c !important;
+      }
+    </style>
+    <script src="../js/ol.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <div class="tab_bar header">
+      <div class="header_tab active_tab" id="maintenance_tab"/>
+        访客邀请
+      </div>
+      <div class="header_tab" id="maintenance_menu"/>
+        访客记录
+      </div>
+    </div>
+    <div id="map_container">
+      <div id="map_wrapper">
+      </div>
+      <div id="floor_wrapper">
+      </div>
+      <p id="map_directions">
+        请点击区域
+      </p>
+      <div id="ok_button">
+          OK
+      </div>
+    </div>
+    <div class="container" id="finishing_up">
+      <div id="info_panel">
+
+      </div>
+      <div class="hbr"></div>
+      <div id="other_comments">
+        <h2>其他说明</h2>
+
+        <textarea placeholder="请输入来访理由" class="input_item" id="comment_box" type="text" rows="4" cols="80"></textarea>
+      </div>
+      <div>
+          <div id="picture_wrapper">
+              <input type="file" accept="image/*" id="hidden_picture" />
+              <div class="picture_box" id="camera_add" type=“file” accept=“image/*” >
+                <img src="../images/camera.png"></img>
+                <span>添加图片</span>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div id="submit_button">
+      确定
+    </div>
+
+
+  </body>
+
+  <!-- Various Scripts -->
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../js/jsrender.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.87/jsrender.min.js"></script> -->
+  <script id="floorChooserTemplate" type="text/x-jsrender">
+      {{for floor}}
+        <div class="floor_button {{if active}}active_button{{/if}} {{if wasJustActive}}inactive_button{{/if}}" id="f_{{:index}}" index="{{:index}}">
+                {{:LEVEL}}
+        </div>
+      {{/for}}
+  </script>
+  <script id="floor_button" type="text/x-jsrender">
+    <div class="floor_button_wrapper">
+    </div>
+  </script>
+  <script id="categoryTemplate" type="text/x-jsrender">
+    {{for category}}
+      <span class="nugget category" index="{{:index}}" id="c_{{:index}}">{{:MstTypeName}}</span>
+    {{/for}}
+  </script>
+  <script id="problemTemplate" type="text/x-jsrender">
+    {{for problems}}
+      <span class="nugget problem" index="{{:index}}" id="p_{{:DtlTypeCode}}">{{:DtlTypeName}}</span>
+    {{/for}}
+  </script>
+  <script id="repairTemplate" type="text/x-jsrender">
+    <table>
+      <tr>
+        <th>来访人姓名</th>
+        <td>
+            <input id="contact_name_input" class="changeable_info input_item" type="text" value=""/>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>来访人电话</th>
+        <td>
+            <input id="contact_phone_input"  class="changeable_info input_item" type="text" value=""/>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>来访人数量</th>
+        <td><input id="num_input" class="num_input" type="number" /></td>
+      </tr>
+      <tr>
+        <th>来访人时间</th>
+        <td><input id="invite_time" type="datetime-local"/></td>
+      </tr>
+      <tr>
+        <th>来访地点</th>
+        <td id="invite_position">
+          <span class="selected_company_name">{{:companyName}}</span>
+          <span class="sleected_feature_name"></span>
+        </td>
+      </tr>
+    </table>
+    <div class="hbr" />
+  </script>
+  <script id="picturePreviewTemplate" type="text/x-jsrender">
+        <div class="pic_preview_box" id="pic_{{:pictureID}}">
+            <div class="upload_wrapper">
+              <div class="upload_bar" id="bar_{{:pictureID}}">
+              </div>
+            </div>
+        </div>
+  </script>
+  <script src="../js/util.js"></script>
+  <script src="../js/ol_util.js"></script>
+  <script src="../js/history_back.js"></script>
+  <script src="../js/visitor_invitation.js"></script>
+  <script src="../js/upload.js"></script>
+  <script src="../js/config.js"></script>
+</html>

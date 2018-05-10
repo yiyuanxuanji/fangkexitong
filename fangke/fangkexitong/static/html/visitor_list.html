@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>访客邀请列表</title>
+  <style type="text/css">
+    @media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+    @media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+    @media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+    @media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+    @media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+    @media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+    @media screen and (min-width:800px){html{font-size:25px}}
+    body{
+      background:#f5f5f5;
+      margin:0;
+      padding: 0;
+    }
+    .list{
+      padding-bottom: 4rem;
+    }
+    .table{
+      width: 100%;
+    }
+    .info_ul{
+      margin: 1rem 0 0 0;
+      width: 100%;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+      font-size: 1.5rem;
+
+    }
+    .info_ul .title_li{
+      line-height: 4rem;
+    }
+    .info_ul .contant_li{
+      border-top:1px solid #f5f5f5;
+    }
+    .info_ul li{
+      background: #fff;
+      float: left;
+      width: 33.3%;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
+    }
+    .creat_btn{
+      position: fixed;
+      bottom:0;
+      height:4rem;
+      left:0;
+      background:#e26a4f;
+      width: 100%;
+      border:0;
+      padding:0;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .list table{
+      width: 100%;
+      line-height: 4rem;
+      font-size: 1.2rem;
+      border: 0;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    .list table tr{
+      border-top:1px solid #ededed;
+    }
+    .list table td{
+      text-align: center;
+      width: 33%;
+    }
+  </style>
+</head>
+<body>
+  <ul class="info_ul">
+    <li class="title_li">访客</li>
+    <li  class="title_li">来访时间</li>
+    <li  class="title_li">状态</li>
+  </ul>
+  <div class="list">
+
+  </div>
+  <button class="creat_btn">新建邀请</button>
+</body>
+<script src="../js/jquery.js"></script>
+<script>
+
+var status_list = [
+  "待接收",
+  "已接受",
+  "已拒绝",
+  "待审核",
+  "已过期",
+  "已到访",
+]
+
+$('.creat_btn').click(function(){
+  window.location.href = "./visitor_invitation.html?companyID="+localStorage.getItem('CompanyId');
+})
+
+function invation_info (that){
+  invite_id = $(that).attr('invite_id');
+  auth_code = $(that).attr('auth_code');
+  window.location.href="invitation_info.html?auth_code="+auth_code+"&invite_id="+invite_id;
+}
+
+$.ajax({
+  type: "get",
+  url: "http://106.14.178.162:8830/api/users/search?session_id="+localStorage.getItem('sessionid'),
+  dataType: 'json',
+  type: "GET",
+  xhrFields: {
+     withCredentials: true
+  },
+  success: function(data, status, xhr) {
+    console.log(data);
+    if (data.success==1) {
+      var list = "<table>";
+      for (var i = 0; i < data.data.length; i++) {
+
+        var format = "";
+
+        var x = data.data[i].visitor_time;
+
+        year= x.substring(0,4);
+
+        month= x.substring(5,7);
+
+        day= x.substring(8,10);
+
+        hour= x.substring(11,13);
+
+        minute= x.substring(14,16);
+
+        format=year+"/"+month+"/"+day;
+
+        list+= "<tr onclick='invation_info(this)' invite_id='"+data.data[i].id+"' auth_code='"+data.data[i].auth_code[0]+"'>";
+        list+= "<td>"+data.data[i].invitee_name+"</td>";
+        list+= "<td>"+format+"</td>";
+        list+= "<td>"+status_list[data.data[i].status_code]+"</td>";
+        list+= "</tr>"
+      }
+      list += "</ table>";
+      $('.list').html(list);
+    }else if (data.success==0){
+      alert(data.data);
+    }
+
+  }
+});
+</script>
+</html>

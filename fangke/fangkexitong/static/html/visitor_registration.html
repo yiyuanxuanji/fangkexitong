@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>访客登记</title>
+  <style type="text/css">
+    @media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+    @media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+    @media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+    @media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+    @media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+    @media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+    @media screen and (min-width:800px){html{font-size:25px}}
+    body{
+      background:#f5f5f5;
+      margin:0;
+      padding: 0;
+    }
+    .business_card{
+      padding: 2rem 2rem 0 2rem;
+      font-size:1.25rem;
+      margin:1rem 0;
+      background: #fff;
+      list-style: none;
+    }
+    .business_card li{
+      line-height: 2rem;
+      padding-bottom:1rem;
+      color: #a4a4a4;
+    }
+    .updata_btn,.add_btn{
+      position: fixed;
+      bottom:0;
+      height:4rem;
+      background:#e26a4f;
+      width: 50%;
+      border:0;
+      padding:0;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .updata_btn{
+      left:0;
+    }
+    .add_btn{
+      right:0;
+      background: #d6d6d6;
+      color:#606060;
+    }
+    .business_card input{
+      border:0;
+      margin-left:2rem;
+    }
+    .info_box{
+      padding-bottom:7.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="info_box">
+    <ul class="business_card">
+      <li>姓名: <input type='text' class='full_name' ></li>
+      <li>电话:  <input type='text' class='phone' ></li>
+      <li>邮箱:  <input type='text' class='email' ></li>
+      <li>证件种类:
+        <select class="id_type">
+          <option value='身份证'>身份证</option>
+        </select>
+      </li>
+      <li>证件号:  <input type='text' class='id_num'></li>
+      <li>公司名称:  <input type='text' class='company' ></li>
+    </ul>
+  </div>
+  <button class="updata_btn">确认</button>
+  <button class="add_btn">添加访客</button>
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+  //获取本人数据
+  $.ajax({
+    url: "http://106.14.178.162:8830/api/users/returninfo?user_id="+getUrlParam('user_id'),
+    type:'get',
+    dataType:'json',
+    success: function(data, status, xhr) {
+      if(data.success==0){
+        alert(data.data);
+      }else if (data.success==1) {
+        console.log(data.data);
+        $('.full_name').eq(0).val(data.data.full_name);
+        $('.phone').eq(0).val(data.data.phone);
+        $('.email').eq(0).val(data.data.email);
+        $('.id_num').eq(0).val(data.data.id_num);
+        $('.company').eq(0).val(data.data.company);
+        // window.location.href="./visitor_invitation.html?companyID="+data.data.CompanyId;
+      }
+    },
+  })
+  //获取url传参
+  function getUrlParam(name) {
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+  }
+
+  $('.updata_btn').click(function(){
+
+    for (var i = 0; i < $('.business_card').length; i++) {
+      var data = {};
+      data.invite_id = getUrlParam('invite_id');
+      data.full_name = $('.business_card').eq(i).find('.full_name').val();
+      data.phone = $('.business_card').eq(i).find('.phone').val();
+      data.email = $('.business_card').eq(i).find('.email').val();
+      data.id_type = $('.business_card').eq(i).find('.id_type').val();
+      data.id_num = $('.business_card').eq(i).find('.id_num').val();
+      data.company = $('.business_card').eq(i).find('.company').val();
+      data.status_code = 1;
+    }
+    $.ajax({
+      url: "http://106.14.178.162:8830/api/users/visitor",
+      type:'post',
+      dataType:'json',
+      data:data,
+      success: function(data, status, xhr) {
+        if(data.success==0){
+          alert(data.data);
+        }else if (data.success==1) {
+          alert(data.data);
+          window.location.href="./invitation_info.html?invite_id="+getUrlParam('invite_id')+"&auth_code="+getUrlParam('auth_code');
+        }
+      },
+    })
+  })
+
+  $('.add_btn').click(function(){
+    var html = "<ul class='business_card'><li>姓名: <input type='text'></li><li>电话:  <input type='text'></li><li>邮箱:  <input type='text'></li><li>证件种类:<select><option value='0'>身份证</option></select></li><li>证件号:  <input type='text'></li><li>公司名称:  <input type='text'></li></ul>";
+    $('.info_box').append(html);
+  })
+
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>访客审核</title>
+  <style type="text/css">
+    @media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+    @media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+    @media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+    @media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+    @media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+    @media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+    @media screen and (min-width:800px){html{font-size:25px}}
+    body{
+      background:#f5f5f5;
+      margin:0;
+      padding: 0;
+    }
+    .business_card{
+      padding: 2rem 2rem 0 2rem;
+      font-size:1.25rem;
+      margin:1rem 0 0;
+      background: #fff;
+      list-style: none;
+      border-bottom:1px solid #f5f5f5;
+    }
+    .business_card li,.review_info li {
+      line-height: 2rem;
+      padding-bottom:1rem;
+      color: #a4a4a4;
+    }
+    .business_card li span,.review_info li span{
+      margin-left:2rem;
+      color:#000;
+    }
+    .updata_btn,.add_btn{
+      position: fixed;
+      bottom:0;
+      height:4rem;
+      background:#fb7e3c;
+      width: 50%;
+      border:0;
+      padding:0;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .updata_btn{
+      left:0;
+    }
+    .add_btn{
+      right:0;
+      background: #d6d6d6;
+      color:#606060;
+    }
+    .business_card input{
+      border:0;
+      margin-left:2rem;
+    }
+    .review_info{
+      background: #fff;
+      font-size:1.25rem;
+      list-style: none;
+      margin:0;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="info_box">
+    <ul class="business_card">
+      <li>访客姓名: <span>张志东 </span> </li>
+      <li>访客电话: <span>13888888888 </span> </li>
+      <li>访客时间: <span>2017 09 12 - 2017 09 15 </span> </li>
+      <li>访客事由: <span>主要针对第三期工程讨论 </span> </li>
+    </ul>
+    <ul class="review_info">
+      <li>审核人&nbsp;&nbsp;&nbsp;&nbsp;: <span>云烨 </span> </li>
+      <li>审核公司: <span>美客集团 </span> </li>
+    </ul>
+  </div>
+  <button class="updata_btn">审核通过</button>
+  <button class="add_btn">审核不通过</button>
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</html>

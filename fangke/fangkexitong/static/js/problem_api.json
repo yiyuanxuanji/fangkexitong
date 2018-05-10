@@ -1,0 +1,113 @@
+{
+  "data": [{
+    "MstTypeCode": "A",
+    "MstTypeName": "强电",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "Test",
+    "MstTypeName": "弱电",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "B",
+    "MstTypeName": "土建",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "C",
+    "MstTypeName": "门",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "D",
+    "MstTypeName": "消防",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "E",
+    "MstTypeName": "安防",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "F",
+    "MstTypeName": "暖通",
+    "DTL": [{
+      "DtlTypeCode": 9,
+      "DtlTypeName": "空调控制面板"
+    }, {
+      "DtlTypeCode": 8,
+      "DtlTypeName": "风口掉落"
+    }, {
+      "DtlTypeCode": 7,
+      "DtlTypeName": "噪音大"
+    }, {
+      "DtlTypeCode": 6,
+      "DtlTypeName": "无风"
+    }, {
+      "DtlTypeCode": 5,
+      "DtlTypeName": "风太小"
+    }, {
+      "DtlTypeCode": 4,
+      "DtlTypeName": "风太大"
+    }, {
+      "DtlTypeCode": 3,
+      "DtlTypeName": "温度太低"
+    }, {
+      "DtlTypeCode": 2,
+      "DtlTypeName": "温度太高"
+    }, {
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "G",
+    "MstTypeName": "电梯",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "H",
+    "MstTypeName": "其它",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "Q",
+    "MstTypeName": "给排水",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "W",
+    "MstTypeName": "装饰",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }, {
+    "MstTypeCode": "K",
+    "MstTypeName": "工程维护",
+    "DTL": [{
+      "DtlTypeCode": 1,
+      "DtlTypeName": "其他"
+    }]
+  }],
+  "message": "报修类型信息",
+  "success": 1
+}

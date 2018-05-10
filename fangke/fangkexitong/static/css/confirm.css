@@ -1,0 +1,88 @@
+.hbr {
+  background-color: #D9D9D9;
+  display: block;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+  -webkit-margin-start: auto;
+  -webkit-margin-end: auto;
+  height: 1px; }
+
+tr {
+  font-size: 11pt;
+  height: 2.5em;
+  color: #494949; }
+
+th {
+  width: 100px;
+  color: #A4A4A4;
+  font-weight: 200; }
+
+td {
+  word-wrap: break-word; }
+
+table {
+  table-layout: fixed;
+  overflow: hidden;
+  display: block; }
+
+th {
+  min-width: 80px;
+  width: 80px;
+  line-break: strict; }
+
+td {
+  overflow-wrap: break-word;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none; }
+
+#top_bar_main {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+#top_bar {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.picture_wrapper {
+  display: flex;
+  flex-wrap: wrap; }
+
+.flex-child, #company_image {
+  margin: auto 15px; }
+
+#company_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; }
+
+.center_thanks {
+  text-align: center; }
+
+#confirm_button {
+  height: 2.5em;
+  background-color: #87AADE;
+  text-align: center;
+  line-height: 2.5em;
+  color: white;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 4px;
+  font-size: 1.3em; }
+
+.picture_preview_box {
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  margin: 10px 8px;
+  border: 1px solid #87AADE; }
+
+#tob_bar tr {
+  height: 2em; }

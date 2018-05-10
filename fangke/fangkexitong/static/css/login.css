@@ -1,0 +1,157 @@
+html{
+  width:100%;
+}
+body{
+  width:100%;
+  background:#f8f8f8;
+  overflow: hidden;
+}
+.all{
+  width:75%;
+  height:7.5rem;
+  background:#fff;
+  margin:0 auto;
+  border-radius:0.2rem;
+  margin-top:20%;
+}
+.allCon{
+  height:100%;
+  overflow:hidden;
+  position:relative;
+}
+.allContent {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+}
+
+.nav {
+  overflow: hidden;
+  height: 25%;
+  margin: 0 0.6rem;
+}
+
+.nav ul li {
+  font-size: 0.4rem;
+  float: left;
+  text-align: center;
+  width: 50%;
+  padding-top: 20%;
+  color: #999;
+}
+
+.nav ul li div {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+  line-height: 0.65rem;
+}
+
+.nav1 {
+  border-bottom: 0.03rem solid #999
+}
+
+.content {
+  width: 200%;
+  height: 75%;
+  position: relative;
+}
+
+.login {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+.loginPhone {
+  width: 80%;
+  height: 0.8rem;
+  border-bottom: 0.02rem solid #999;
+  position: relative;
+  left: 10%;
+}
+
+.loginPhone img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.loginPhone input {
+  font-size: 0.28rem;
+  position: absolute;
+  height: 0.7rem;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: none;
+  text-indent: 0.2rem;
+  outline: none;
+  width: 55%;
+}
+
+.loginWord {
+  margin-top: 0.2rem;
+}
+
+.forgetWord {
+  font-size: 0.25rem;
+  position: absolute;
+  right: 10%;
+  margin-top: 0.2rem;
+  overflow: hidden;
+  color: #46b8e4;
+  outline: none;
+  text-decoration: none;
+}
+
+.loginBtn {
+  background: #ccc;
+  font-size: 0.34rem;
+  outline: none;
+  width: 80%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  border-radius: 0.1rem;
+  color: #fff;
+  border: none;
+  position: absolute;
+  left: 0;
+  bottom: 20%;
+  left: 10%;
+}
+
+.registration {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+.loginPhone button {
+  font-size: 0.24rem;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 0.05rem;
+  color: #fff;
+  width: 1.3rem;
+  font-size: 0.16rem;
+  background: #46b8e4;
+  position: absolute;
+  right: 0.05rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 0.4rem;
+  line-height: 0.4rem;
+}
