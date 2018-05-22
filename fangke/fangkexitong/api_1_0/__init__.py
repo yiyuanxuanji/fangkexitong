@@ -5,7 +5,7 @@ from flask import Blueprint
 api = Blueprint('api', __name__)
 
 # 需要把再次拆分出去的文件,导入到创建蓝图对象的地方
-# from . import register,passport,house,orders
+from . import applicant, users, visitor,reception
 
 
 @api.after_request

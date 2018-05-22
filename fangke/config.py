@@ -2,13 +2,13 @@
 
 import redis
 
-
 class Config:
     """基本配置参数"""
     SECRET_KEY = "TQ6uZxn+SLqiLgVimX838/VplIsLbEP5jV7vvZ+Ohqw="
 
     # flask-sqlalchemy使用的参数
-    SQLALCHEMY_DATABASE_URI = "mysql://root:mysql@localhost/python24"  # 数据库
+    SQLALCHEMY_DATABASE_URI = "mssql+pymssql://visitor:12345678@172.16.1.6/visitor"  # 数据库
+    # SQLALCHEMY_DATABASE_URI = "mysql://root:218830@localhost/visitor0517?charset=utf8"  # 数据库
     SQLALCHEMY_TRACK_MODIFICATIONS = True  # 追踪数据库的修改行为，如果不设置会报警告，不影响代码的执行
 
     # 创建redis实例用到的参数
@@ -36,3 +36,22 @@ config = {
     "development": DevelopmentConfig,  # 开发模式
     "production": ProductionConfig  # 生产/线上模式
 }
+
+import os
+import gevent.monkey
+gevent.monkey.patch_all()
+
+import multiprocessing
+
+# debug = True
+loglevel = 'debug'
+bind = "0.0.0.0:7001"
+pidfile = "log/gunicorn.pid"
+accesslog = "log/access.log"
+errorlog = "log/debug.log"
+daemon = True
+
+# 启动的进程数
+workers = multiprocessing.cpu_count()
+worker_class = 'gevent'
+x_forwarded_for_header = 'X-FORWARDED-FOR'
