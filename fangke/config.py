@@ -4,10 +4,10 @@ import redis
 
 class Config:
     """基本配置参数"""
-    SECRET_KEY = "TQ6uZxn+SLqiLgVimX838/VplIsLbEP5jV7vvZ+Ohqw="
+    # SECRET_KEY = "TQ6uZxn+SLqiLgVimX838/VplIsLbEP5jV7vvZ+Ohqw="
 
     # flask-sqlalchemy使用的参数
-    SQLALCHEMY_DATABASE_URI = "mssql+pymssql://visitor:12345678@172.16.1.6/visitor"  # 数据库
+    SQLALCHEMY_DATABASE_URI = "mssql+pymssql://visitor:12345678@cnspec.myds.me:61433/visitor"  # 数据库
     # SQLALCHEMY_DATABASE_URI = "mysql://root:218830@localhost/visitor0517?charset=utf8"  # 数据库
     SQLALCHEMY_TRACK_MODIFICATIONS = True  # 追踪数据库的修改行为，如果不设置会报警告，不影响代码的执行
 

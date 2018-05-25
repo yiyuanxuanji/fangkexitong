@@ -377,6 +377,7 @@ class Mapping(Sized, Iterable, Container):
         raise KeyError
 
     def get(self, key, default=None):
+        # type: (object, object) -> object
         'D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.'
         try:
             return self[key]

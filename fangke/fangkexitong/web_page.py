@@ -17,10 +17,10 @@ def html_file(file_name):
         file_name = "html/" + file_name
 
 
-    csrf_token = csrf.generate_csrf()
+    # csrf_token = csrf.generate_csrf()
     response = make_response(current_app.send_static_file(file_name))
     # 往客户端浏览器的cookie中写入csrf_token
-    response.set_cookie("csrf_token", csrf_token)
+    # response.set_cookie("csrf_token", csrf_token)
 
     return response
 

@@ -1,0 +1,87 @@
+[2018-05-24 13:13:01 +0000] [8345] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:13:01 +0000] [8345] [INFO] Listening at: http://127.0.0.1:5000 (8345)
+[2018-05-24 13:13:01 +0000] [8345] [INFO] Using worker: sync
+[2018-05-24 13:13:01 +0000] [8349] [INFO] Booting worker with pid: 8349
+[2018-05-24 13:13:01 +0000] [8351] [INFO] Booting worker with pid: 8351
+[2018-05-24 13:13:01 +0000] [8353] [INFO] Booting worker with pid: 8353
+[2018-05-24 13:13:01 +0000] [8355] [INFO] Booting worker with pid: 8355
+[2018-05-24 13:15:37 +0000] [9195] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:15:37 +0000] [9195] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:37 +0000] [9195] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:38 +0000] [9195] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:38 +0000] [9195] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:39 +0000] [9195] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:39 +0000] [9195] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:39 +0000] [9211] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:15:39 +0000] [9211] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:39 +0000] [9211] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:40 +0000] [9195] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:40 +0000] [9195] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:40 +0000] [9211] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:40 +0000] [9211] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:41 +0000] [9195] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:41 +0000] [9195] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:41 +0000] [9211] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:41 +0000] [9211] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:42 +0000] [9195] [ERROR] Can't connect to ('106.14.178.162', 1234)
+[2018-05-24 13:15:42 +0000] [9211] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:42 +0000] [9211] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:43 +0000] [9211] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:15:43 +0000] [9211] [ERROR] Retrying in 1 second.
+[2018-05-24 13:15:44 +0000] [9211] [ERROR] Can't connect to ('106.14.178.162', 1234)
+[2018-05-24 13:16:01 +0000] [8349] [INFO] Parent changed, shutting down: <Worker 8349>
+[2018-05-24 13:16:01 +0000] [8349] [INFO] Worker exiting (pid: 8349)
+[2018-05-24 13:16:01 +0000] [8351] [INFO] Parent changed, shutting down: <Worker 8351>
+[2018-05-24 13:16:01 +0000] [8351] [INFO] Worker exiting (pid: 8351)
+[2018-05-24 13:16:01 +0000] [8353] [INFO] Parent changed, shutting down: <Worker 8353>
+[2018-05-24 13:16:01 +0000] [8353] [INFO] Worker exiting (pid: 8353)
+[2018-05-24 13:16:01 +0000] [8355] [INFO] Parent changed, shutting down: <Worker 8355>
+[2018-05-24 13:16:01 +0000] [8355] [INFO] Worker exiting (pid: 8355)
+[2018-05-24 13:16:08 +0000] [9361] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:16:08 +0000] [9361] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:08 +0000] [9361] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:09 +0000] [9361] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:09 +0000] [9361] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:10 +0000] [9361] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:10 +0000] [9361] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:11 +0000] [9361] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:11 +0000] [9361] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:12 +0000] [9361] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:12 +0000] [9361] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:13 +0000] [9361] [ERROR] Can't connect to ('106.14.178.162', 1234)
+[2018-05-24 13:16:16 +0000] [9413] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:16:16 +0000] [9413] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:16 +0000] [9413] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:17 +0000] [9413] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:17 +0000] [9413] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:18 +0000] [9413] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:18 +0000] [9413] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:19 +0000] [9413] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:19 +0000] [9413] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:20 +0000] [9413] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:20 +0000] [9413] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:21 +0000] [9413] [ERROR] Can't connect to ('106.14.178.162', 1234)
+[2018-05-24 13:16:44 +0000] [9574] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:16:44 +0000] [9574] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:44 +0000] [9574] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:45 +0000] [9574] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:45 +0000] [9574] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:46 +0000] [9574] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:46 +0000] [9574] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:47 +0000] [9574] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:47 +0000] [9574] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:48 +0000] [9574] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:16:48 +0000] [9574] [ERROR] Retrying in 1 second.
+[2018-05-24 13:16:49 +0000] [9574] [ERROR] Can't connect to ('106.14.178.162', 1234)
+[2018-05-24 13:18:27 +0000] [10138] [INFO] Starting gunicorn 19.8.1
+[2018-05-24 13:18:27 +0000] [10138] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:18:27 +0000] [10138] [ERROR] Retrying in 1 second.
+[2018-05-24 13:18:28 +0000] [10138] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:18:28 +0000] [10138] [ERROR] Retrying in 1 second.
+[2018-05-24 13:18:29 +0000] [10138] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:18:29 +0000] [10138] [ERROR] Retrying in 1 second.
+[2018-05-24 13:18:30 +0000] [10138] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:18:30 +0000] [10138] [ERROR] Retrying in 1 second.
+[2018-05-24 13:18:31 +0000] [10138] [ERROR] Invalid address: ('106.14.178.162', 1234)
+[2018-05-24 13:18:31 +0000] [10138] [ERROR] Retrying in 1 second.
+[2018-05-24 13:18:32 +0000] [10138] [ERROR] Can't connect to ('106.14.178.162', 1234)

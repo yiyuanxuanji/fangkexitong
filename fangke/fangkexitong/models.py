@@ -4,9 +4,9 @@ from datetime import datetime
 from fangkexitong import db
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
-
+import time
 # 链接数据库('数据库类型+数据库驱动名称://用户名:口令@机器地址:端口号/数据库名')
-engine = db.create_engine("mysql://root:mysql@172.0.0.1/visitor", encoding='utf-8', echo=True)   # 数据库
+engine = db.create_engine("mssql+pymssql://visitor:12345678@cnspec.myds.me:61433/visitor", encoding='utf-8', echo=True)   # 数据库
 Base = declarative_base()   # 生成SQLORM基类
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
@@ -26,11 +26,11 @@ class Users(BaseModel, db.Model):
     __tablename__ = "fk_users"
 
     id = db.Column(db.Integer, primary_key=True)  # 编号
-    username = db.Column(db.String(32), unique=True, nullable=False)  # 用户名
-    password = db.Column(db.String(32), nullable=False)  # 密码
-    full_name = db.Column(db.String(32), nullable=False)  # 姓名
-    phone = db.Column(db.String(11), nullable=False)  # 手机号
-    company = db.Column(db.String(32), nullable=False)  # 公司的名称
+    username = db.Column(db.String(100), unique=True, nullable=False)  # 用户名
+    password = db.Column(db.String(100), nullable=False)  # 密码
+    full_name = db.Column(db.String(100), nullable=False)  # 姓名
+    phone = db.Column(db.String(100), nullable=False)  # 手机号
+    company = db.Column(db.String(100), nullable=False)  # 公司的名称
 
     # # 通过装饰器property，把password方法提升为属性
     # @property
@@ -54,19 +54,25 @@ class Invitation(BaseModel, db.Model):
     __tablename__ = "fk_invitation"
 
     id = db.Column(db.Integer, primary_key=True)  # 邀请函编号
-    full_name = db.Column(db.String(32), nullable=True)  # 用户姓名
-    phone = db.Column(db.String(11), nullable=False)  # 手机号
-    visitor_count = db.Column(db.String(2), nullable=True)  # 来访的人数
-    visit_time = db.Column(db.Date, nullable=False)  # 来访的时间
-    leave_data = db.Column(db.Date, nullable=False)  # 离开的时间
-    position = db.Column(db.String(32),  nullable=False)  # 来访的地址
-    reason = db.Column(db.String(100),  nullable=False)  # 来访的事由
-    image_url = db.Column(db.String(256), nullable=True)  # 图片的地址url
-    check_in = db.Column(db.String(32),  nullable=True)  # 访问的楼层
-    user_id = db.Column(db.String(32), nullable=False)  # 租户的id(用户名)
-    state = db.Column(db.String(32),  nullable=False)  # 邀请函的状态
+    full_name = db.Column(db.String(100), nullable=True)  # 用户姓名
+    phone = db.Column(db.Integer, nullable=False)  # 手机号
+    visitor_count = db.Column(db.Integer, nullable=True)  # 来访的人数
+    visit_time = db.Column(db.String(100), nullable=False)  # 来访的时间
+    leave_data = db.Column(db.String(100), nullable=True)  # 离开的时间
+    position = db.Column(db.String(320),  nullable=False)  # 来访的地址
+    reason = db.Column(db.String(1000),  nullable=False)  # 来访的事由
+    image_url = db.Column(db.String(2560), nullable=True)  # 图片的地址url
+    check_in = db.Column(db.String(100),  nullable=True)  # 访问的楼层
+    user_id = db.Column(db.String(100), nullable=False)  # 租户的id(用户名)
+    state = db.Column(db.String(100),  nullable=False)  # 邀请函的状态
     flag = db.Column(db.Boolean,  default=True)  # 邀请函的群发和个人
+    info_data = db.Column(db.String(100), nullable=True)  # 标识
     # invit_person = db.relationship("PersonOpen", backref="invitation")  # 受邀人的外键
+    # visit_time = time.mktime(visit_time)
+    user_fullname = db.Column(db.String(100), nullable=True)  # 租用户名字
+    user_phone = db.Column(db.String(100), nullable=True)  # 租户用手机
+
+
 
     def inviting_object(self):
         """访客邀请列表"""
@@ -74,7 +80,7 @@ class Invitation(BaseModel, db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "full_name": self.full_name,
-            "visit_time": self.come_date,
+            "visit_time": self.visit_time,
             "state": self.state
         }
         return invit_object
@@ -83,14 +89,15 @@ class Invitation(BaseModel, db.Model):
         """访客邀请的数据"""
         invit_info = {
             "id": self.id,
-            "visit_time": self.come_date,
+            "visit_time": self.visit_time,
             "position": self.position,
             "full_name": self.full_name,
             "visitor_count": self.visitor_count,
             "reason": self.reason,
             # "image_url": self.image_url
             "phone": self.phone,
-            "check_in": self.check_in
+            "check_in": self.check_in,
+            "info_data":self.info_data
         }
         return invit_info
 
@@ -101,17 +108,18 @@ class InvitingPerson(BaseModel, db.Model):
     __tablename__ = "fk_invit_person"
 
     id = db.Column(db.Integer, primary_key=True)  # 受邀人编号
-    open_id = db.Column(db.String(32), nullable=False)  # 受邀人的open_id
-    full_name = db.Column(db.String(32), nullable=False)  # 用户姓名
-    phone = db.Column(db.String(11), nullable=False)  # 手机号
-    email = db.Column(db.String(64), unique=True, nullable=False)  # 邮箱
+    open_id = db.Column(db.String(100), nullable=False)  # 受邀人的open_id
+    full_name = db.Column(db.String(100), nullable=False)  # 用户姓名
+    phone = db.Column(db.String(100), nullable=False)  # 手机号
+    email = db.Column(db.String(100),  nullable=False)  # 邮箱
     # certificates = db.Column(db.Enum("身份证", "军官证"), default="身份证")  # 证件的类型
-    id_type = db.Column(db.String(32), nullable=False)  # 证件的类型
-    id_num = db.Column(db.String(20), unique=True, nullable=False)  # 身份证号码
-    company = db.Column(db.String(32),  nullable=False)  # 公司的名称
+    id_type = db.Column(db.String(100), nullable=False)  # 证件的类型
+    id_num = db.Column(db.String(100),  nullable=False)  # 身份证号码
+    company = db.Column(db.String(100),  nullable=False)  # 公司的名称
     # peropen = db.relationship("PersonOpen", backref="invit_person")  # 受邀人和租户的关系外键
     # visitor_id = db.relationship("Visitors", backref="invit_person")    # 受访人的外键
     # applicant_id = db.relationship("Applicant", backref="invit_person")  # 申请人的外键
+
 
     def inviting_info(self):
         info_mation = {
@@ -131,13 +139,13 @@ class PersonOpen(BaseModel, db.Model):
     __tablename__ = "fk_invit_open"
 
     id = db.Column(db.Integer, primary_key=True)  # 主键
-    inperson_id = db.Column(db.String(32), nullable=False)  # 关联的受邀人的open_id
-    inperson_name = db.Column(db.String(32), nullable=False)  # 受邀人的名字
-    invit_id = db.Column(db.String(32), nullable=False)  # 关联的邀请函的id
-    user_id = db.Column(db.String(32), nullable=False)  # 租户的用户名
-    user_name = db.Column(db.String(32), nullable=False)  # 关联的租户的名字
-    user_comp = db.Column(db.String(32), nullable=False)  # 关联的租户的公司
-    visitor_id = db.Column(db.String(32), nullable=True)  # 关联的受访人的信息
+    inperson_id = db.Column(db.String(100), nullable=False)  # 关联的受邀人的open_id
+    inperson_name = db.Column(db.String(100), nullable=False)  # 受邀人的名字
+    invit_id = db.Column(db.String(100), nullable=False)  # 关联的邀请函的id
+    user_id = db.Column(db.String(100), nullable=False)  # 租户的用户名
+    user_name = db.Column(db.String(100), nullable=False)  # 关联的租户的名字
+    user_comp = db.Column(db.String(100), nullable=False)  # 关联的租户的公司
+    visitor_id = db.Column(db.String(100), nullable=True)  # 关联的受访人的信息
     delete = db.Column(db.Boolean,  default=False)    # 是否显示
 
 
@@ -147,12 +155,12 @@ class Visitors(BaseModel, db.Model):
     __tablename__ = "fk_visitor"
 
     id = db.Column(db.Integer, primary_key=True)  # 受访人人编号
-    full_name = db.Column(db.String(32), nullable=False)  # 用户姓名
-    phone = db.Column(db.String(11), nullable=False)  # 手机号
-    email = db.Column(db.String(64), unique=True, nullable=False)  # 邮箱
-    id_type = db.Column(db.Enum("身份证", "军官证"), nullable=True)  # 证件的类型
-    id_num = db.Column(db.String(20), unique=True, nullable=False)  # 身份证号码
-    company = db.Column(db.String(32),  nullable=False)  # 公司的名称
+    full_name = db.Column(db.String(100), nullable=False)  # 用户姓名
+    phone = db.Column(db.String(100), nullable=False)  # 手机号
+    email = db.Column(db.String(100), unique=True, nullable=False)  # 邮箱
+    id_type = db.Column(db.String(100), nullable=True)  # 证件的类型
+    id_num = db.Column(db.String(100), unique=True, nullable=False)  # 身份证号码
+    company = db.Column(db.String(100),  nullable=False)  # 公司的名称
     # inperson_id = db.Column(db.Integer, db.ForeignKey("fk_invit_person.id"))  # 关联的受邀人的id
 
     def visitor_info(self):
@@ -174,16 +182,16 @@ class Applicant(BaseModel, db.Model):
     __tablename__ = "fk_applicant"
 
     id = db.Column(db.Integer, primary_key=True)  # 主键
-    full_name = db.Column(db.String(32),  nullable=False)  # 申请人的名字
-    phone = db.Column(db.String(11),  nullable=False)   # 申请人的电话
-    ap_company = db.Column(db.String(32),  nullable=False)  # 申请人的公司的名称
-    company = db.Column(db.String(32),  nullable=False)  # 要去拜访的公司的名称
-    invit_name = db.Column(db.String(32),  nullable=False)  # 要拜访的用户姓名
-    reason = db.Column(db.String(100), nullable=False)  # 拜访的事由
-    visit_time = db.Column(db.Date,  nullable=False)  # 拜访的时间
-    leave_data = db.Column(db.Date, nullable=True)  # 拜访离开的时间
-    user_id = db.Column(db.String(32),  nullable=False)  # 租户的id(可以通过PersonOpen查询)
-    state = db.Column(db.String(32), nullable=False)  # 申请人的状态
+    full_name = db.Column(db.String(100),  nullable=False)  # 申请人的名字
+    phone = db.Column(db.String(100),  nullable=False)   # 申请人的电话
+    ap_company = db.Column(db.String(100),  nullable=False)  # 申请人的公司的名称
+    company = db.Column(db.String(100),  nullable=False)  # 要去拜访的公司的名称
+    invit_name = db.Column(db.String(100),  nullable=False)  # 要拜访的用户姓名
+    reason = db.Column(db.String(200), nullable=False)  # 拜访的事由
+    visit_time = db.Column(db.String(100),  nullable=False)  # 拜访的时间
+    leave_data = db.Column(db.String(100), nullable=True)  # 拜访离开的时间
+    user_id = db.Column(db.String(100),  nullable=False)  # 租户的id(可以通过PersonOpen查询)
+    state = db.Column(db.String(100), nullable=False)  # 申请人的状态
 
     def inviting_object(self):
         """访客邀请列表"""
@@ -202,13 +210,27 @@ class Applicant(BaseModel, db.Model):
             "full_name": self.full_name,
             "phone": self.phone,
             "visit_time": self.visit_time,
-            "leave_data": self.leave_data,
+            "leave_data": self.visit_time,
             "reason": self.reason,
             "invit_name": self.invit_name,
             "company": self.company,
             "state": self.state
         }
         return audit_information
+
+
+class Yanzheng(BaseModel, db.Model):
+    """验证"""
+
+    __tablename__ = "fk_yanzheng"
+
+    id = db.Column(db.Integer, primary_key=True)  # 主键
+    info_data = db.Column(db.String(100), nullable=False)  # 标识
+    info = db.Column(db.String(1000), nullable=False)  # 内容
+    open_id = db.Column(db.String(100), nullable=False)  # 打开人的id
+
+
+
 
 
 if __name__ == '__main__':

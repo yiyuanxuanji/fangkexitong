@@ -444,6 +444,7 @@ else:
             def __contains__(self, key):
                 return key.upper() in self.data
             def get(self, key, failobj=None):
+                # type: (object, object) -> object
                 return self.data.get(key.upper(), failobj)
             def update(self, dict=None, **kwargs):
                 if dict:

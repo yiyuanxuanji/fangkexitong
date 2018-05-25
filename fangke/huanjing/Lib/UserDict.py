@@ -89,6 +89,7 @@ class UserDict:
         if len(kwargs):
             self.data.update(kwargs)
     def get(self, key, failobj=None):
+        # type: (object, object) -> object
         if key not in self:
             return failobj
         return self[key]
@@ -197,6 +198,7 @@ class DictMixin:
         if kwargs:
             self.update(kwargs)
     def get(self, key, default=None):
+        # type: (object, object) -> object
         try:
             return self[key]
         except KeyError:

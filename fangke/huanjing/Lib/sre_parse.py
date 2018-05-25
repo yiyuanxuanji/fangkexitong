@@ -211,6 +211,7 @@ class Tokenizer:
             return 1
         return 0
     def get(self):
+        # type: () -> object
         this = self.next
         self.__next()
         return this
